@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -9,8 +9,7 @@
   body{color:white;background:#0a0a0a;}
   .hero{
     min-height:100vh;
-    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.88)),
-    url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2000') center/cover;
+    background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.88)), url('WhatsApp Image 2026-11-09 at 18.28.35.jpeg') center/cover;
     padding: 40px 8%;
     display:flex; flex-direction:column; justify-content:center;
   }
@@ -18,11 +17,14 @@
   h1 span{color:#ff3b30; font-style:italic; font-weight:400;}
   p.slogan{margin:25px 0 30px; font-size:19px; font-style:italic; max-width:560px; line-height:1.4;}
   .btns{display:flex; gap:12px; flex-wrap:wrap;}
-  .btn{padding:14px 20px; border-radius:8px; text-decoration:none; font-size:14px; font-family: Arial, sans-serif; font-weight:600;}
+  .btn{padding:14px 20px; border-radius:8px; text-decoration:none; font-size:14px; font-family: Arial, sans-serif; font-weight:600; cursor:pointer; border:none;}
   .btn-red{background:#ff3b30; color:white;}
   .btn-dark{background:rgba(255,255,255,0.08); color:white; border:1px solid rgba(255,255,255,0.3);}
   .ruta{margin-top:60px; font-size:11px; letter-spacing:2px; color:#aaa;}
   .info{margin-top:20px; font-family: Arial, sans-serif; font-size:13px; color:#ddd; max-width:600px; line-height:1.6;}
+  #contenido{display:none; background:#111; padding:40px 8%; font-family: Arial, sans-serif;}
+  #contenido h2{font-family: Georgia, serif; margin-bottom:20px;}
+  #contenido ul{line-height:2; color:#ddd;}
   @media(max-width:600px){ h1{font-size:36px;} }
 </style>
 </head>
@@ -31,12 +33,41 @@
     <h1>Diplomado en Interpretación de <span>ECG</span> y Farmacología Aplicada en Prehospitalaria</h1>
     <p class="slogan">Leer un ECG es decidir en segundos.</p>
     <div class="btns">
-      <a class="btn btn-red" href="#">Inscripción y diagnóstica</a>
-      <a class="btn btn-dark" href="#">Entrar con mi contraseña</a>
-      <a class="btn btn-dark" href="#">Mis resultados</a>
+      <a class="btn btn-red" href="https://wa.me/50769988051?text=Hola%20quiero%20inscribirme%20en%20el%20Diplomado%20de%20ECG.%20Mi%20c%C3%A9dula%20es%3A" target="_blank">Inscripción y diagnóstica</a>
+      <button class="btn btn-dark" onclick="entrar()">Entrar con mi cédula</button>
+      <button class="btn btn-dark" onclick="entrar()">Mis resultados</button>
     </div>
     <div class="info">Aprende a interpretar el electrocardiograma paso a paso y a aplicar la farmacología correcta en la emergencia prehospitalaria.</div>
     <div class="ruta">SU RUTA EN EL CURSO</div>
   </section>
+  <div id="contenido">
+    <h2 id="bienvenida">Bienvenido al Diplomado</h2>
+    <p style="margin-bottom:15px; color:#ccc;">Estás dentro con tu cédula. Aquí va tu contenido:</p>
+    <ul>
+      <li>Módulo 1 - Fundamentos del ECG</li>
+      <li>Módulo 2 - Ritmos y arritmias</li>
+      <li>Módulo 3 - Farmacología aplicada</li>
+      <li>Examen Diagnóstico</li>
+      <li>Mis resultados</li>
+    </ul>
+    <br>
+    <p>¿Dudas? Escríbeme al WhatsApp: <a style="color:#ff3b30;" href="https://wa.me/50769988051">69988051</a></p>
+  </div>
+<script>
+function entrar(){
+  var cedula = prompt("Escribe tu número de cédula para entrar. Ejemplo: 8-123-456");
+  if(cedula === null) return;
+  cedula = cedula.trim();
+  var valido = /^[0-9]{1,2}-[0-9]{3,4}-[0-9]{3,4}$/.test(cedula);
+  if(valido){
+    document.getElementById("bienvenida").innerText = "Bienvenido al Diplomado - Cédula: " + cedula;
+    document.getElementById("contenido").style.display = "block";
+    document.getElementById("contenido").scrollIntoView({behavior:"smooth"});
+    alert("¡Bienvenido! Entraste con la cédula " + cedula);
+  } else {
+    alert("Esa cédula no parece válida. Escríbela así: 8-123-456");
+  }
+}
+</script>
 </body>
 </html>
